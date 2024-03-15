@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Random;
 
 public class GameBoard {
     private char[][] grid; //https://ioflood.com/blog/2d-array-java/#:~:text=To%20create%20a%202D%20array%20in%20Java%2C%20we%20use%20the,type%5Brows%5D%5Bcolumns%5D%3B%20.&text=This%20code%20creates%20a%202D,array%20are%20initialized%20to%20zero.
@@ -18,6 +18,11 @@ public class GameBoard {
         }
     }
 
+    public void generateObstacles(int numObstacles) {
+        Random random = new Random();
+        for (int i = 0; i < numObstacles; i++) {
 
+
+        }
     }
 }
