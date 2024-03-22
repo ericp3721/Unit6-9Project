@@ -1,4 +1,4 @@
-public class Character {
+class Character {
     private int row;
     private int col;
 
@@ -14,5 +14,4 @@ public class Character {
     public int getCol() {
         return col;
     }
-
 }
