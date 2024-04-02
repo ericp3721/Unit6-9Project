@@ -14,4 +14,9 @@ class Character {
     public int getCol() {
         return col;
     }
+
+    public void move(int newRow, int newCol) {
+        this.row = row;
+        this.col = col;
+    }
 }

@@ -42,12 +42,47 @@ public class GameBoard {
         grid[character.getRow()][character.getCol()] = 'P';
     }
 
+
+
+
+    public void movePlayer(Character player, char direction) {
+        int newRow = player.getRow();
+        int newCol = player.getCol();
+
+        if (direction == 'w') { // Move up
+            newRow--;
+            grid[player.getRow()][player.getCol()] = ' ';
+            player.move(newRow, newCol);
+            grid[newRow][newCol] = 'P';
+        } else if (direction == 'a') { // Move left
+            newCol--;
+            grid[player.getRow()][player.getCol()] = ' ';
+            player.move(newRow, newCol); // Update player's position
+            grid[newRow][newCol] = 'P'; // Update new position with player
+        } else if (direction == 's') { // Move down
+            newRow++;
+            grid[player.getRow()][player.getCol()] = ' '; // Clear previous position
+            player.move(newRow, newCol); // Update player's position
+            grid[newRow][newCol] = 'P'; // Update new position with player
+        } else if (direction == 'd') { // Move right
+            newCol++;
+            grid[player.getRow()][player.getCol()] = ' '; // Clear previous position
+            player.move(newRow, newCol); // Update player's position
+            grid[newRow][newCol] = 'P'; // Update new position with player
+        }
+    }
+
+
+
+
+
     public void display() {
-        for (int i = 0; i < grid.length; i++) {
+        for (int i =0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 System.out.print(grid[i][j] + "|");
             }
             System.out.println();
         }
     }
+
 }
