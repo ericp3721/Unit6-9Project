@@ -7,7 +7,7 @@ public class Game {
         gameBoard = new GameBoard(10, 10); // Creating a 10x10 game board
         gameBoard.generateObstacles(15); // Generating 15 obstacles randomly
         gameBoard.generateTreasures(5); // Generating 5 treasures randomly
-        player = new Character(0, 0); // Placing the player at the starting position
+        player = new Character(0, 0);
         gameBoard.placeCharacter(player);
     }
 
