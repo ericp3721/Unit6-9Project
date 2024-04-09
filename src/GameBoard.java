@@ -82,6 +82,7 @@ public class GameBoard {
                 if (treasure.getRow() == newRow && treasure.getCol() == newCol) {
                     totalTreasures--;
                     treasures.remove(treasure);
+                    gameObjects.remove(treasure);
                     System.out.println(treasure);
                     System.out.println("Treasure collected! Remaining treasures: " + totalTreasures);
                     break;
