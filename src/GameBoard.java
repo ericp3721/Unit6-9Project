@@ -42,7 +42,6 @@ public class GameBoard {
         grid[character.getRow()][character.getCol()] = '♔';
     }
     private boolean isValidMove(int row, int col) {
-        // Check if the position is within the grid boundaries
         if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
             return false;
         }
