@@ -12,8 +12,7 @@ public class Game {
     }
 
     public void start() {
-        gameBoard.display(); // Displaying the initial state of the game board
-
+        gameBoard.display();
         Scanner scanner = new Scanner(System.in);
         char direction;
         while (true) {

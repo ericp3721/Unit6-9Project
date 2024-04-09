@@ -7,7 +7,10 @@ public class GameBoard {
 
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Treasure> treasures;
+    private ArrayList<GameObject> gameObjects; // ArrayList to hold all game objects
+
     private int totalTreasures;
+
     public int getTotalTreasures() {
         return totalTreasures;
     }
@@ -15,6 +18,8 @@ public class GameBoard {
         grid = new char[rows][cols];
         obstacles = new ArrayList<>();
         treasures = new ArrayList<>();
+        gameObjects = new ArrayList<>();
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 grid[i][j] = ' ';
@@ -22,34 +27,20 @@ public class GameBoard {
         }
     }
     private void initializeGrid() {
-        // Initialize grid with empty spaces
+        // Initialize grid
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 grid[i][j] = ' ';
             }
         }
-
         // Generate obstacles and place them on the grid
         generateObstacles(15); // Adjust the number of obstacles as needed
-        for (Obstacle obstacle : obstacles) {
-            grid[obstacle.getRow()][obstacle.getCol()] = 'X'; // Assuming 'X' represents an obstacle
-        }
-
         // Generate treasures and place them on the grid
         generateTreasures(10); // Adjust the number of treasures as needed
-        for (Treasure treasure : treasures) {
-            grid[treasure.getRow()][treasure.getCol()] = 'T'; // Assuming 'T' represents a treasure
-        }
     }
-
-
-
     public void placeCharacter(Character character) {
         grid[character.getRow()][character.getCol()] = '♔';
     }
-
-
-
     private boolean isValidMove(int row, int col) {
         // Check if the position is within the grid boundaries
         if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
@@ -91,6 +82,7 @@ public class GameBoard {
                 if (treasure.getRow() == newRow && treasure.getCol() == newCol) {
                     totalTreasures--;
                     treasures.remove(treasure);
+                    System.out.println(treasure);
                     System.out.println("Treasure collected! Remaining treasures: " + totalTreasures);
                     break;
                 }
@@ -98,7 +90,7 @@ public class GameBoard {
 
             // Update the grid to reflect the player's new position
             grid[currentRow][currentCol] = ' '; // Clear the current position
-            grid[newRow][newCol] = '♔'; // Set the player symbol at the new position
+            grid[newRow][newCol] = '♔';
 
         } else {
             System.out.println("Invalid move! Cannot move there.");
@@ -118,6 +110,7 @@ public class GameBoard {
             int col = random.nextInt(grid[0].length);
             Obstacle obstacle = new Obstacle(row, col);
             obstacles.add(obstacle);
+            gameObjects.add(obstacle);
         }
     }
 
@@ -130,46 +123,42 @@ public class GameBoard {
             int col = random.nextInt(grid[0].length);
             Treasure treasure = new Treasure(row, col);
             treasures.add(treasure);
+            gameObjects.add(treasure);
         }
     }
-
-
-
-
     public void display() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 char cell = grid[i][j];
                 boolean isObstacle = false;
                 boolean isTreasure = false;
-
-                // Check if the cell contains an obstacle
                 for (Obstacle obstacle : obstacles) {
                     if (obstacle.getRow() == i && obstacle.getCol() == j) {
                         isObstacle = true;
                         break;
                     }
                 }
-
-                // Check if the cell contains a treasure
                 for (Treasure treasure : treasures) {
                     if (treasure.getRow() == i && treasure.getCol() == j) {
                         isTreasure = true;
+                        System.out.print("💎|");
                         break;
                     }
                 }
-
-                // Update the cell character based on its contents
-                if (isObstacle) {
-                    System.out.print("👻|"); // Display obstacle
-                } else if (isTreasure) {
-                    System.out.print("💎|"); // Display treasure
-                } else {
-                    System.out.print(cell + "|"); // Display empty space or player
+                if (!isTreasure) {
+                    if (isObstacle) {
+                        System.out.print("👻|"); // Display obstacle
+                    } else {
+                        System.out.print(cell + "|");
+                    }
                 }
             }
             System.out.println();
         }
+        for (GameObject gameObject : gameObjects) {
+            System.out.println(gameObject.toString());
+        }
     }
+
 
 }

@@ -15,7 +15,6 @@ public class GameObject {
         return col;
     }
 
-    // Method to be overridden
     @Override
     public String toString() {
         return "Object at (" + row + ", " + col + ")";

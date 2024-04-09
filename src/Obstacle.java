@@ -3,7 +3,7 @@ public class Obstacle extends GameObject {
         super(row, col);
     }
 
-    // Override toString() method
+
     @Override
     public String toString() {
         return "Obstacle at (" + getRow() + ", " + getCol() + ")";
