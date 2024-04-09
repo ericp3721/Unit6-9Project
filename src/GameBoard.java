@@ -112,7 +112,7 @@ public class GameBoard {
 
     public void generateObstacles(int maxObstacles) {
         Random random = new Random();
-        int numObstacles = random.nextInt(maxObstacles); // Generate a random number of obstacles less than the maximum
+        int numObstacles = random.nextInt(maxObstacles) + 1; // Generate a random number of obstacles (at least one)
         for (int i = 0; i < numObstacles; i++) {
             int row = random.nextInt(grid.length);
             int col = random.nextInt(grid[0].length);
@@ -123,7 +123,7 @@ public class GameBoard {
 
     public void generateTreasures(int maxTreasures) {
         Random random = new Random();
-        int numTreasures = random.nextInt(maxTreasures); // Generate a random number of treasures less than the maximum
+        int numTreasures = random.nextInt(maxTreasures) + 1; // Generate a random number of treasures (at least one)
         totalTreasures = numTreasures;
         for (int i = 0; i < numTreasures; i++) {
             int row = random.nextInt(grid.length);
@@ -161,9 +161,9 @@ public class GameBoard {
 
                 // Update the cell character based on its contents
                 if (isObstacle) {
-                    System.out.print("X|"); // Display obstacle
+                    System.out.print("👻|"); // Display obstacle
                 } else if (isTreasure) {
-                    System.out.print("T|"); // Display treasure
+                    System.out.print("💎|"); // Display treasure
                 } else {
                     System.out.print(cell + "|"); // Display empty space or player
                 }

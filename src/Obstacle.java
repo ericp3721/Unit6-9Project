@@ -1,16 +1,11 @@
-public class Obstacle {
-    private int row;
-    private int col;
-
+public class Obstacle extends GameObject {
     public Obstacle(int row, int col) {
-        this.row = row;
-        this.col = col;
+        super(row, col);
     }
 
-    public int getRow() {
-        return row;
-    }
-    public int getCol() {
-        return col;
+    // Override toString() method
+    @Override
+    public String toString() {
+        return "Obstacle at (" + getRow() + ", " + getCol() + ")";
     }
 }

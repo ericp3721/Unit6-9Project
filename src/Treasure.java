@@ -1,17 +1,11 @@
-
-public class Treasure {
-    private int row;
-    private int col;
-
+public class Treasure extends GameObject {
     public Treasure(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-    public int getRow() {
-        return row;
+        super(row, col);
     }
 
-    public int getCol() {
-        return col;
+    // Override toString() method
+    @Override
+    public String toString() {
+        return "Treasure at (" + getRow() + ", " + getCol() + ")";
     }
 }
