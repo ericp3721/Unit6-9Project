@@ -8,7 +8,7 @@ public class Game {
         gameBoard.generateObstacles(15); // Generating 15 obstacles randomly
         gameBoard.generateTreasures(5); // Generating 5 treasures randomly
         player = new Character(0, 0); // Placing the player at the starting position
-        gameBoard.placeCharacter(player); // Placing the player on the game board
+        gameBoard.placeCharacter(player);
     }
 
     public void start() {
